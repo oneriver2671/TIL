@@ -121,3 +121,73 @@
 ```
 
 - items : 반복할 객체의 이름
+  <br><br><br>
+
+---
+
+### ('21.8.20)
+
+```jsp
+<c:out value="${performDTO }" />
+```
+
+`session.getAttribute("performDTO")`를 대신해 값을 받아오는 걸 확인. <br>
+But, 만약 `<c:set>`으로 performDTO라는 변수를 새로 만들면, 그 변수로 덮어지는 것을 확인. <br>
+
+```jsp
+<!-- 예시 -->
+<%
+  PerformDTO performDTO = (PerformDTO)session.getAttribute("performDTO");
+%>
+<c:set var="performDTO" value="<%=performDTO.getLocation() %>" />
+<c:out value="${performDTO }" />
+
+<!-- 이렇게 찍으면, location 값이 찍혀나온다. -->
+```
+
+<br><br>
+
+- if문으로 값 비교할 때 실수.
+
+```html
+<c:if test="${performDTO != null}">
+  <div class="test">performDTO는 null이 아니다!</div>
+</c:if>
+
+<!-- 처음에 작동하지 않았던 이유 -->
+<c:if test="${performDTO} != null">
+  <!-- null을 {} 바깥에 쓰면 안됨. 안에 써줘야 함! -->
+  <div class="test">performDTO는 null이 아니다!</div>
+</c:if>
+```
+
+&nbsp;&nbsp; => 이처럼 { } 안에서 비교해줘야지, { } 밖에서 비교하면 안된다. <br><br><br>
+
+- 넘어온 객체가 자바빈(JavaBean)의 형태라면, 아래와 같이 값을 뽑아내면 된다.
+
+```jsp
+<c:out value="${performDTO.perform_num }" />
+<c:out value="${performDTO.perform_title }" />
+<c:out value="${performDTO.location }" />
+```
+
+<br>
+
+- `<c:out>`으로 보여주는 것 대신, 코드라인 위쪽에서 `<c:set>`으로 변수에 넣은 뒤 아래에선 EL표기법으로 보여주는게 훨씬 보기 깔끔하고 유지보수가 더 편할 듯 하다. 프론트, 백 업무분담하기도 편해보이고.
+
+```jsp
+// 이전 코드라인
+관람시간: <c:out value="${performDTO.running_time }" />분
+(인터미션<c:out value="${performDTO.intermission }" />  분)
+```
+
+```jsp
+// 바꾼 코드라인
+<c:set var="runningTime" value="${performDTO.running_time }" />
+<c:set var="intermission" value="${performDTO.intermission }" />
+
+
+관람시간: ${runningTime}분 (인터미션 ${intermission}분)
+```
+
+---
