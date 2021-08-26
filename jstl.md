@@ -123,6 +123,17 @@
 - items : 반복할 객체의 이름
   <br><br><br>
 
+### split 기능 사용하기
+
+```jsp
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+
+<c:set var="booked_seat" value="${performSeatDTO.booked_seat }" />   <!-- 콤마로 연결된 문자열인 상태 -->
+<c:set var="bookedSeatArr" value="${fn:split(booked_seat, ',')}" />		<!-- 위의 function uri 불러와야함. -->
+```
+
+<br><br>
+
 ---
 
 ### ('21.8.20)

@@ -1,3 +1,7 @@
+### JSP페이지에서 실행 순서: Java → jstl → HTML → javascript
+
+<br><br>
+
 ## Servlet에서 session 사용하기
 
 - 아래는 JSP페이지에서 session에 넣어둔 값이다.
