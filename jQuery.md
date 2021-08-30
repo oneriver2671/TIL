@@ -1,3 +1,17 @@
+## jquery에서 부모, 자식 노드를 선택하는 방법!
+
+```jsx
+/* 해당 댓글의 번호, 내용만 뽑아서 가져오게 했다.  */
+$('.comment_new_action').click(function(){
+		var _comment_re = $(this).parent().children('.comment_new_input').val();
+		var _comment_num = $(this).parent().children('.comment_num_hidden').val();
+	});
+```
+
+<br>
+
+
+
 ## html의 radio 버튼이 변경될 시 이벤트 처리
 ___
 
