@@ -2,18 +2,15 @@
 
 ```jsx
 /* 해당 댓글의 번호, 내용만 뽑아서 가져오게 했다.  */
-$('.comment_new_action').click(function(){
-		var _comment_re = $(this).parent().children('.comment_new_input').val();
-		var _comment_num = $(this).parent().children('.comment_num_hidden').val();
-	});
+$(".comment_new_action").click(function () {
+  var _comment_re = $(this).parent().children(".comment_new_input").val();
+  var _comment_num = $(this).parent().children(".comment_num_hidden").val();
+});
 ```
 
 <br>
 
-
-
 ## html의 radio 버튼이 변경될 시 이벤트 처리
-___
 
 ```javascript
 $("input[name='payment']").change(function () {
@@ -62,8 +59,8 @@ $(document).ready(function () {
 <br><br>
 
 ## datepicker에서 원하는 날짜만 활성화하기
-___
 
+---
 
 최초 jQuery가 기본으로 제공하는 datepicker 코드는, 아래와 같이 간단했다.
 
@@ -84,8 +81,8 @@ $('#datepicker').datepicker();
 
 $(function() {
 		var performDate = '${performDate.substring(0,10)}';		// jstl에 담긴 날짜정보.
-		
-		//선택가능 날짜 
+
+		//선택가능 날짜
 		var availableDates = [performDate];		// 여러 날짜가 들어갈 수 있으니, 배열의 형태. (일단 날짜 1개로 고정)
 		function available(date) {
 			var thismonth = date.getMonth()+1;
@@ -107,20 +104,20 @@ $(function() {
 		    }
 		}
 
-		$('#datepicker').datepicker({ 
+		$('#datepicker').datepicker({
 			dateFormat: "yy-mm-dd",
 			regional: "ko",
-			beforeShowDay: available 
+			beforeShowDay: available
 		});
 
 	});
 </>
 ```
+
 <br>
 아래는 그냥 해당하는 html.
 
 ```html
-<div id="datepicker"></div>			<!-- jQuery 오픈소스 사용. -->
+<div id="datepicker"></div>
+<!-- jQuery 오픈소스 사용. -->
 ```
-
-

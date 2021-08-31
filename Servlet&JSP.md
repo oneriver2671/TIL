@@ -43,6 +43,18 @@ session.setAttribute("performSeatDTO", performSeatDTO);
 
 <br>
 
+## session 유지시간 설정
+
+- WEBContent → WEB_INF → `web.xml` 파일에서 아래 코드를 추가/수정해주면 된다. (단위는 `분`)
+
+```xml
+<session-config>
+	<session-timeout>60</session-timeout>
+</session-config>
+```
+
+<br>
+
 ---
 
 session에 넣는게 서버 과부하 때문에 별로 좋은 것은 아닌데, 애초에 티켓예매 페이지를 5개로 나눠 설계한 것이 골치아파져 일단 session으로 처리했다.
