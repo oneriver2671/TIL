@@ -45,7 +45,7 @@
   ```
   <span style="color:red">내용</span>
   ```
-  <span style="color:red">마크다운</span>에서는 지원하지 않아 어쩔 수 없이 html 문법을.
+  (<span style="color:red">github</span>에서 글자색 변경은 지원되지 않음.)
 
 <br>
 
@@ -58,4 +58,4 @@
 <br>
 
 - `<u>밑줄</u>` : <u>밑줄</u> 긋기. (html 태그)
-  (마크다운에서는 `__밑줄__` 이라는데? **밑줄**)
+  (하지만 github에선 지원하지 않는다.)
