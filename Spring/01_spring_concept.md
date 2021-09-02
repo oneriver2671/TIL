@@ -59,7 +59,7 @@ spring이 대표적인 java framework로 자리 잡게 된 것은 아래와 같
 - **AOP (Aspect-Oriented Programming: 관점지향 프로그래밍)**
 
 <br>
-Spring Boot이다. spring boot는 환경 설정을 최소화해주어 (사용자가 해야 할 부분을 대부분 spring boot가 해준다.) 개발자가 비즈니스 로직에 집중할 수 있도록 도와주어 생산성을 크게 향상한다.
+spring boot는 환경 설정을 최소화해주어 (사용자가 해야 할 부분을 대부분 spring boot가 해준다.) 개발자가 비즈니스 로직에 집중할 수 있도록 도와주어 생산성을 크게 향상한다.
 <br><br>
 하지만 간혹 Spring Boot가 Spring framework와 전혀 다른 새로운 기술이라고 오해하는 사람들이 있다. 그래서 spring에 관한 공부를 spring boot로 시작하는 경우가 종종 있는데, 이는 잘못된 사실이다. 아마 spring boot에 관하여 서치를 하다 보면 "스프링 부트 공부하기 전에 스프링부터 공부하세요"라는 말을 종종 볼 수 있었을 것이다. 왜냐하면 스프링 부트는 스프링 프레임워크라는 큰 틀에 속하는 도구이기 때문이다. 때문에 반드시 spring framework를 먼저 공부하는 것이 정도는 아니지만, 둘의 관계를 이해하고 공부하는 것이 중요하다.
 
