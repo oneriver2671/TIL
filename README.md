@@ -1,7 +1,4 @@
-# TIL
-Today I Learned
-
-
+# Today I Learned (TIL)
 ### <작성원칙>
 - 최초 학습내용의 정리는 notion에서 이루어진다.
 - 이후, 알아보기 편한 형태로 TIL에 업로드한다.
