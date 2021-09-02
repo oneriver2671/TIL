@@ -43,3 +43,27 @@ var memberId = "${id}"; // 회원 ID (session에서 get)
   >삭제</a
 >
 ```
+
+<br>
+
+## [javascript] html의 값 여러개를 가져와 배열에 넣기 ⭐
+
+```jsx
+function goNext() {
+  /* html부분 생긴 형태 */
+  // <div id="seatChoice_show_grade">
+  // 	<button> (value="좌석정보", text="좌석등급(R석, S석..)")  </button>
+  //	<button> (value="좌석정보", text="좌석등급(R석, S석..)")  </button>
+  // </div>
+
+  // '배열'을 만들어 담기
+  var selectedSize = $("#seatChoice_show_grade button").length; // button의 갯수를 가져올 수 있음!!
+  var selectedSeatGrade = new Array(selectedSize); // js의 배열 생성 (좌석등급)
+  var selectedSeatArr = new Array(selectedSize); // (좌석정보)
+
+  for (var i = 0; i < selectedSize; i++) {
+    selectedSeatGrade[i] = $("#seatChoice_show_grade button").eq(i).text(); // '좌석등급'을 순서대로 담기
+    selectedSeatArr[i] = $("#seatChoice_show_grade button").eq(i).val(); // '좌석정보'를 순서대로 담기
+  }
+}
+```

@@ -53,6 +53,20 @@
 </c:if>
 ```
 
+- `<c:if>` 활용 중 생겼던 오류
+
+  ```html
+  <c:if test="${performDTO != null}">
+    <div class="test">performDTO는 null이 아니다!</div>
+  </c:if>
+
+  <!-- 처음에 작동하지 않았던 이유 -->
+  <c:if test="${performDTO} != null">
+    <!-- null을 {} 바깥에 쓰면 안됨. 안에 써줘야 함! -->
+    <div class="test">performDTO는 null이 아니다!</div>
+  </c:if>
+  ```
+
 <br>
 
 ## <c:choose>
@@ -131,6 +145,49 @@
 <c:set var="booked_seat" value="${performSeatDTO.booked_seat }" />   <!-- 콤마로 연결된 문자열인 상태 -->
 <c:set var="bookedSeatArr" value="${fn:split(booked_seat, ',')}" />		<!-- 위의 function uri 불러와야함. -->
 ```
+
+<br>
+
+### forEach활용 (배열 출력하기)
+
+⇒ 티켓예매 '좌석 등급', '좌석 정보' 각각 배열에 담아 forEach로 출력했음.
+
+- Java의 String 클래스의 `split()` 메소드를 활용해 배열에 담았다.
+
+  ```java
+  <%
+  // step2.jsp의 좌석정보
+   String selectedSeatGrade = request.getParameter("selectedSeatGrade");
+   String selectedSeatVal = request.getParameter("selectedSeatVal");
+
+  // 콤마로 구분되어 넘어오네. 순서대로 처리하자. 배열에 담아야함.
+   String[] seatGradeArr = selectedSeatGrade.split(",");		// 콤마 단위로 끊어 배열에 넣을 수 있는 split() 메소드
+   String[] seatValArr = selectedSeatVal.split(",");
+  %>
+  ```
+
+- 이후 jstl 변수 설정.
+
+  ```html
+  <c:set var="seatGradeArr" value="<%=seatGradeArr %>" />
+  <!-- 이런식으로 넣어줄 수 있음. -->
+  <c:set var="seatValArr" value="<%=seatValArr %>" />
+  ```
+
+- 마지막으로, html에서 forEach활용해 배열 찍어내기
+
+  ```html
+  <div id="selected_seatBox_grade">
+    <c:forEach var="grade" items="${seatGradeArr }">
+      <div>${grade }</div>
+    </c:forEach>
+  </div>
+  <div id="selected_seatBox_val">
+    <c:forEach var="val" items="${seatValArr }">
+      <div>${val }</div>
+    </c:forEach>
+  </div>
+  ```
 
 <br><br>
 
