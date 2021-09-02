@@ -30,8 +30,8 @@ why? 대체 왜 열광하며 만들었을까?
 
 <br>
 
-![역할구현분리](imgs/역할구현분리.png){: width="100px" height="100px"}
-![역할구현분리2](imgs/역할구현분리2.png){: width="100px" height="100px"}
+<img src="imgs/역할구현분리.png" width="400px" height="230px" />
+<img src="imgs/역할구현분리2.png" width="450px" height="230px" />
 
 <br>
 
@@ -41,7 +41,7 @@ why? 대체 왜 열광하며 만들었을까?
 
 ![SOLID](imgs/SOLID.png)
 
-![SRP](imgs/SRP.png)
+<img src="imgs/SRP.png" width="600" height="330">
 
 ![SOLID각각](imgs/SOLID각각.png)
 
