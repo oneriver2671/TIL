@@ -13,24 +13,24 @@
   - `ComponentScan`을 활용. 기존 AppConfig와 다르게, `@Bean`이 없다.
     (참고로, `@Configuration`안에 `@Component` 어노테이션이 있기 때문에, 이전 예제인 AppConfig가 자동 등록됨. → excludeFilters를 통해 예외해줌. 일반적으론 이렇게 제외하지 않는다‼)
 
-        ```java
-        @ComponentScan(
-        		excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = Configuration.class)
-        		)
-        ```
+    ```java
+      @ComponentScan(
+        excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = Configuration.class)
+        )
+    ```
 
 - 이후, 구현체들(구현한 클래스들)에 가서 `@Component`를 붙여줌.
 - 이제 의존관계 주입은 어떻게 하나❓
   ⇒ `Autowired`를 통해 자동 의존관계 주입. 생성자에 붙여줌.
 
-      ```java
-      // 생성자 (-> 생성자 주입 ★)
-      	@Autowired   // == ac.getBean(MemberRepository.class)
-      	public MemberServiceImpl(MemberRepository memberRepository) {
-      		super();
-      		this.memberRepository = memberRepository;
-      	}
-      ```
+  ```java
+  // 생성자 (-> 생성자 주입 ★)
+  @Autowired   // == ac.getBean(MemberRepository.class)
+  public MemberServiceImpl(MemberRepository memberRepository) {
+    super();
+    this.memberRepository = memberRepository;
+  }
+  ```
 
 ![Untitled](imgs/컴포넌트스캔.png)
 
