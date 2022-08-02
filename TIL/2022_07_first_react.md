@@ -1,3 +1,11 @@
+###22.08.01(월)
+- public 폴더의 image 사용할 경우, `process.env.PUBLIC_URL`을 붙여주자.
+
+```jsx
+{/**public의 img 사용 시 */}
+<img src={process.env.PUBLIC_URL + '/logo192.png'} width="80%"></img>
+```
+
 ###22.07.30(토)
 ## onChange / onInput
 
