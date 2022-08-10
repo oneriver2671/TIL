@@ -128,12 +128,12 @@
     ```python
     # "Hello World"를 5번 출력하기 (변수 불필요)
     for _ in range(5):
-    	print("Hello World")
+  	    print("Hello World")
     
     # 1~9까지의 자연수 더하기 (변수가 필요한 상황)
     sum = 0
     for i in range(1, 10):
-    	sum += i
+        sum += i
     print(sum)
     ```
     
@@ -375,3 +375,266 @@ if a >= 0 and a <= 20:
     else:
     		print('성적이 80점 미만입니다.')
     ```
+
+
+## 반복문
+
+- while문, for문이 있는데 코테에선 for문이 더 간결한 경우가 많음.
+
+```python
+# while문 (1 ~ 9의 정수 중에서 홀수만 더하기)
+i = 1
+result = 0
+
+while i <= 9:
+	if i % 2 == 1:
+		result += i
+	i += 1
+
+print(result)
+```
+
+```python
+# for문
+array = [1, 2, 3, 4, 5]
+
+for x in array:
+	print(x)
+```
+
+- 기본적인 for문이 c#에서 `foreach()`문과 유사하네. 배열에 있는 값을 하나씩 순서대로 가져오고 싶을 때 사용하면 되겠다.
+
+### range(시작 값, 끝 값 + 1)
+
+Java, C# 쪽에서 흔히 쓰던 `for(int i=0; i<=9; i++)` 문법을 쓰려면, 파이썬에선
+`for(i in range(9))` ⇒ 이런식으로 내장 함수 `range()`를 써주면 됨.
+(인자를 1개만 넣으면 자동으로 시작값은 0이 된다.)
+
+```python
+# i는 1~9까지의 모든 값을 순회
+for i in range(1, 10)
+	result += i
+
+print(result)
+```
+
+### continue
+
+반복문에서 남은 코드의 실행은 무시하고, 다음 반복을 진행하고자 할 때.
+
+```python
+# 1부터 9까지 홀수의 합 구하기
+result = 0
+
+for i in range(1, 10):
+	if i % 2 == 0:
+		continue
+	result += i
+
+print(result)
+```
+
+### break
+
+```python
+i = 1
+
+while True:
+	print("현재 i의 값:", i)
+	if i == 5:
+		break
+	i += 1
+```
+
+# 함수와 람다 표현식
+
+### global 키워드
+
+변수에 `global` 키워드를 지정하면, 해당 함수에선 지역 변수를 만들지 않고 함수 바깥에 선언된 변수를 바로 참조하게 됨.
+
+```python
+a = 0
+
+def func():
+	global a    # 바깥의 변수 a를 참조한다.
+	a += 1
+```
+
+- 참고: 전역변수로 선언된 리스트 객체의 내부 메서드를 수행하는 것은 오류없이 수행 가능하다.
+
+```python
+array = [1, 2, 3, 4, 5]
+
+def func():
+	array.append(6)
+	print(array)
+
+func()
+```
+
+### 여러 개의 반환값
+
+- 파이썬에서의 함수는 여러개의 반환값을 가질 수 있다. (’**패킹**’이라고 함. 다시 담는 건 ‘언패킹’.)
+
+```python
+def operator(a, b):
+	add_var = a + b
+	subtract_var = a - b
+	multiply_var = a * b
+	divide_var = a / b
+	return add_var, subtract_var, multiply_var, divide_var
+
+a, b, c, d = operator(7, 3)
+print(a, b, c, d)
+```
+
+### 람다 표현식
+
+- 함수를 간단하게 작성할 수 있다. (이름없는 함수)
+- 함수 자체를 입력으로 받는 함수에서 유용하게 사용 / 함수가 간단하거나 한번 쓰고 말 때
+
+```python
+def add(a, b):
+	return a + b
+
+#일반적인 add() 메서드 사용
+print(add(3, 7))
+
+# 람다 표현식으로 구현한 add() 메서드
+print((lambda a, b: a + b)(3, 7))
+```
+
+```python
+# 예시1: sort() 함수를 사용해 정렬할 때 유용하게 사용할 수 있다.
+
+array = [('홍길동', 50), ('이순신', 32), ('아무개', 74)]
+
+# 람다 없이 함수 만들어 사용
+def my_key(x):
+    return x[1]
+
+print(sorted(array, key=my_key))
+
+# 람다 사용 시.
+print(sorted(array, lambda x: x[1]))
+```
+
+예시2) 여러개의 리스트에 적용하기
+
+```python
+# 각 list별 같은 인덱스끼리 더하고 싶다.
+
+list1 = [1, 2, 3, 4, 5]
+list2 = [6, 7, 8, 9, 10]
+
+result = map(lambda a, b: a + b, list1, list2)
+print(list(result))
+
+# 결과
+# [7, 9, 11, 13, 15]
+```
+
+# 실전에서 유용한 표준 라이브러리
+
+![2022-08-10 16 37 15.png](./imgs/2022-08-10_16_37_15.png)
+
+### 자주 사용되는 내장 함수
+
+- `sum()`, `min(), max()`, `eval()`
+- `sorted()` : 각 원소를 정렬한 결과를 반환함.
+    
+    ```python
+    # sorted()
+    result = sorted([9, 1, 8, 5, 4])     # 오름차순
+    reverse_result = sorted([9, 1, 8, 5, 4], reverse=True)     # 내림차순
+    
+    # sorted() with key : 정렬 기준을 명시할 수 있다.
+    # 두번째 원소를 기준으로 내림차순 정렬하기
+    array = [('홍길동', 35), ('이순신', 75), ('아무개', 50)]
+    result = sorted(array, key=lambda x: x[1], reverse=True)
+    ```
+    
+
+## 순열과 조합
+
+- 순열은 순서 상관있음. ‘CAB’ ≠ ‘CBA’
+
+![2022-08-10_16_51_23.png](./imgs/2022-08-10_16_51_23.png)
+
+### 순열 라이브러리
+
+```python
+from itertools import permutations
+
+data = ['A', 'B', 'C']
+
+result = list(permutations(data, 3))     # 모든 순열 구하기 (3개를 골라 순서 나열)
+print(result)
+```
+
+### 조합 라이브러리
+
+```python
+from itertools import combinations
+
+data = ['A', 'B', 'C']
+
+result = list(combinations(data, 2))
+print(result)
+```
+
+### 중복 순열과 중복 조합
+
+- `product` 라이브러리 - 중복 순열 구할 때
+- `combinations_with_replacement` 라이브러리 - 중복 조합 구할 때
+
+```python
+from itertools from product
+
+data = ['A', 'B', 'C']
+
+# 2개를 뽑는 모든 순열 구하기 (중복 허용)
+result = list(product(data, repeat=2)) 
+print(result)
+
+from itertools import combinations_with_replacement
+
+data = ['A', 'B', 'C']
+
+# 2개를 뽑는 모든 조합 구하기 (중복 허용)
+result = list(combinations_with_replacement(data, 2))
+print(result)
+```
+
+### Counter 라이브러리
+
+- 파이썬 collections 라이브러리의 Counter는 등장 횟수를 세는 기능을 제공함.
+- 리스트와 같은 반복 가능한 객체가 주어졌을 때, 내부의 원소가 각각 몇번씩 등장했는지 알려준다.
+
+```python
+from collections import Counter
+
+counter = Counter(['red', 'blue', 'red', 'green', 'blue', 'blue'])
+
+print(counter['blue'])     # 'blue'가 등장한 횟수 출력
+print(counter['green'])    # 'green'이 등장한 횟수 출력
+print(dict(counter))       # 사전 자료형으로 반환
+```
+
+### 최대 공약수와 최소 공배수
+
+- `math` 라이브러리를 활용하면 된다. 최대공약수는 `gcd()`, 최소공배수는 직접 만들어줘야 함.
+
+```python
+import math
+
+# 최소 공배수(LCM)을 구하는 함수
+def lcm(a, b):
+    return a * b // math.gcd(a, b)
+
+a = 21
+b = 14
+
+print(math.gcd(21, 14))    # 최대 공약수(GCD) 계산
+print(lcm(21, 14))         # 최소 공배수(LCM) 계산
+```
