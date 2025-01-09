@@ -1,22 +1,15 @@
 '''
-k번째 약수 출력하기
+K번째 수
 '''
 
 # import sys
 # sys.stdin=open("input.txt", "rt")
 
-n, k = map(int, input().split())
-cnt = 0
+T = int(input())
 
-for i in range(1, n+1):
-    if n%i == 0:
-        cnt += 1
-    if cnt == k:
-        print(i)
-        break
-else: 
-    print(-1)
+for i in range(T):
+    N, s, e, k = map(int, input().split())
+    arr = list(map(int, input().split()))
+    arr = sorted(arr[s-1:e])   # s번째 ~ e번째
+    print('#' + str(i+1), arr[k-1])
 
-
-# k번째 약수가 발견되지 않는 경우도 있음 (-> n: 6, k: 5)
-# for~else 구문이 있다. break가 작동하지 않고 정상적으로 끝나면, else문이 실행됨.

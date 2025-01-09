@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Frontend",
+    "\\Frontend\\React"
   ],
+  "SelectedNode": "\\Frontend\\React\\first_react_basic.md",
   "PreviewInSolutionExplorer": false
 }
